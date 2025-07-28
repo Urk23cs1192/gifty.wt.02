@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hotel Reservation System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    video {
+      display: block;
+      margin: 0 auto 30px;
+      border-radius: 10px;
+      max-width: 100%;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    fieldset {
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    .radio-group, .checkbox-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .radio-group label, .checkbox-group label {
+      font-weight: normal;
+    }
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+    }
+    progress {
+      width: 100%;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hotel Promo Video -->
+  <video autoplay muted loop controls>
+    <source src="hotel-tour.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Hotel Reservation Form -->
+  <h1>Hotel Reservation Form</h1>
+
+  <form action="/serverlogic" method="post" enctype="multipart/form-data">
+    <fieldset>
+      <legend>Personal Information</legend>
+
+      <label for="fullname">Full Name:</label>
+      <input type="text" id="fullname" name="fullname" required autofocus placeholder="Enter your full name" maxlength="50">
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required placeholder="example@email.com">
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required pattern=".{6,}" placeholder="Minimum 6 characters">
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" placeholder="10-digit mobile number">
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required max="2005-12-31">
+
+      <label for="guests">Number of Guests:</label>
+      <input type="number" id="guests" name="guests" required min="1" max="10">
+    </fieldset>
+
+    <fieldset>
+      <legend>Reservation Details</legend>
+
+      <label for="checkin">Check-In Date:</label>
+      <input type="date" id="checkin" name="checkin" required>
+
+      <label for="checkout">Check-Out Date:</label>
+      <input type="date" id="checkout" name="checkout" required>
+
+      <label for="roomtype">Room Type:</label>
+      <select id="roomtype" name="roomtype" required>
+        <option value="">Select a room</option>
+        <option value="single">Single Room</option>
+        <option value="double">Double Room</option>
+        <option value="deluxe">Deluxe Room</option>
+        <option value="suite">Suite</option>
+        <option value="penthouse">Penthouse</option>
+      </select>
+
+      <label>Payment Method:</label>
+      <div class="radio-group">
+        <label><input type="radio" name="payment" value="credit" required> Credit Card</label>
+        <label><input type="radio" name="payment" value="debit" required> Debit Card</label>
+      </div>
+
+      <label>Additional Facilities:</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="facility_wifi" value="WiFi"> Wi-Fi</label>
+        <label><input type="checkbox" name="facility_breakfast" value="Breakfast"> Breakfast</label>
+        <label><input type="checkbox" name="facility_pool" value="Pool"> Swimming Pool</label>
+        <label><input type="checkbox" name="facility_gym" value="Gym"> Gym Access</label>
+      </div>
+
+      <label for="idproof">Upload ID Proof (PDF or Image):</label>
+      <input type="file" id="idproof" name="idproof" required accept=".jpg,.jpeg,.png,.pdf">
+    </fieldset>
+
+    <fieldset>
+      <legend>Feedback</legend>
+
+      <label for="comments">Any Special Requests / Comments:</label>
+      <textarea id="comments" name="comments" rows="4" placeholder="Mention any special requests..."></textarea>
+
+      <label for="searchhotel">Search Hotel Location:</label>
+      <input type="search" id="searchhotel" name="searchhotel" placeholder="Enter city or location" required>
+
+      <label for="website">Hotel Website:</label>
+      <input type="url" id="website" name="website" placeholder="https://hotelwebsite.com" required>
+    </fieldset>
+
+    <fieldset>
+      <legend>Reservation Progress</legend>
+      <label for="progress">Reservation Progress:</label>
+      <progress id="progress" value="60" max="100">60%</progress>
+    </fieldset>
+
+    <div class="form-actions">
+      <input type="submit" value="Submit Reservation">
+      <input type="reset" value="Reset Form">
+    </div>
+  </form>
+
+</body>
+</html>
